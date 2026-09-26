@@ -33,6 +33,7 @@ Parametric, code-only CAD for the Pequi SSL robot, using [build123d](https://bui
 | `raspberry_pi` | Raspberry Pi 4B STEP + dimension drawing | 1 |
 | `can_hat` | Waveshare RS485 CAN HAT STEP; `pi_stack()` mounts it on the Pi | 1 |
 | `imu` | Pololu MinIMU-9 v5 STEP | 1 |
+| `kicker_board` | ZJUNlict Booster Board 2019 KiCad/STEP conversion + photos; tall parts (caps, rocker) as envelopes | 1 |
 | `solenoid` | SOLETEC 018 drawing (kicker candidate) | 1 |
 
 ## Conventions
