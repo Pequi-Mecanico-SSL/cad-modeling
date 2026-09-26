@@ -1,0 +1,3 @@
+[submodule "imports/mechanics"]
+	path = imports/mechanics
+	url = https://github.com/Pequi-Mecanico-SSL/mechanics.git
