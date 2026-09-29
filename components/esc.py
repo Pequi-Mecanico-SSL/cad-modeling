@@ -1,7 +1,8 @@
 """ST B-G431B-ESC1 motor controller (one per motor), from the team's vendor STEP.
 
 Frame: PCB bottom at Z=0, component side up, origin at the center of the ESC section.
-The detachable ST-LINK strip (USB, potentiometer, button) is on the -X side and the motor phase pads on the +Y edge.
+The detachable ST-LINK strip (USB, potentiometer, button) is on the -X side and stays on in the robot.
+The motor phase pads are on the +Y edge and the battery pads in the -Y corners, on the component side.
 The board has no mounting holes.
 """
 
@@ -15,6 +16,8 @@ PCB_THICKNESS = 1.56  # STEP
 ESC_SIZE = (17.75, 41.0)  # STEP, without the ST-LINK strip
 STLINK_WIDTH = 12.25  # STEP, detachable strip on the -X side
 BREAK_GAP = 1.0  # STEP, slotted gap between the strip and the ESC
+POWER_PADS = [(-7.25, -18.4), (7.25, -18.4)]  # photo (reference/esc), negative then positive
+POWER_PAD_SIZE = (3.0, 4.2)  # photo
 
 STEP_ESC_MIN_X = STLINK_WIDTH + BREAK_GAP
 STEP_BREAK_X = STLINK_WIDTH + BREAK_GAP / 2

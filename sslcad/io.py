@@ -25,6 +25,11 @@ def load_step(name: str) -> Shape:
     return import_step(path)
 
 
+def _volume(shape: Shape) -> float:
+    # Compound.volume is unreliable for nested assemblies
+    return sum(s.volume for s in shape.solids())
+
+
 def build(shape: Shape, name: str, render: bool = True, export: bool = True) -> Path:
     """Print a geometry summary and write out/<name>/<name>.png, plus .step/.stl when `export` is set.
 
@@ -39,12 +44,12 @@ def build(shape: Shape, name: str, render: bool = True, export: bool = True) -> 
     print(f"  bbox min  ({bb.min.X:.2f}, {bb.min.Y:.2f}, {bb.min.Z:.2f})")
     print(f"  bbox max  ({bb.max.X:.2f}, {bb.max.Y:.2f}, {bb.max.Z:.2f})")
     print(f"  size      {bb.size.X:.2f} x {bb.size.Y:.2f} x {bb.size.Z:.2f} mm")
-    print(f"  volume    {shape.volume:.1f} mm^3")
     solids = shape.solids()
+    print(f"  volume    {_volume(shape):.1f} mm^3")
     print(f"  solids {len(solids)}  faces {len(shape.faces())}  edges {len(shape.edges())}")
     if isinstance(shape, Compound) and shape.children:
         for child in shape.children:
-            print(f"    - {child.label or '(unlabeled)'}: {child.volume:.1f} mm^3")
+            print(f"    - {child.label or '(unlabeled)'}: {_volume(child):.1f} mm^3")
     print(f"  -> {out.relative_to(ROOT)}/", flush=True)
 
     # Render before the STL export: OCC keeps the finest mesh on the faces and would reuse it for the render

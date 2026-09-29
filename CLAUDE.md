@@ -28,13 +28,14 @@ Parametric, code-only CAD for the Pequi SSL robot, using [build123d](https://bui
 | --- | --- | ---: |
 | `power_distribution` | modeled from photos and caliper measurements | 1 |
 | `drive_motor` | Nanotec DF45L024048-A STEP + datasheet | 4 |
-| `omni_wheel` | GTF Robots 50 mm v4 STEP | 4 |
-| `esc` | ST B-G431B-ESC1 STEP; `esc(with_stlink=False)` removes the detachable strip | 4 |
+| `omni_wheel` | GTF Robots 50 mm v4 STEP, bore reduced to the real Ø4 | 4 |
+| `esc` | ST B-G431B-ESC1 STEP (the detachable ST-LINK strip stays on) + UM2516 photo for the battery pads | 4 |
+| `xt90i` | XT90I vendor drawing + photos; `esc_with_xt90i()` solders the male side onto the ESC battery pads | 4 |
 | `raspberry_pi` | Raspberry Pi 4B STEP + dimension drawing | 1 |
 | `can_hat` | Waveshare RS485 CAN HAT STEP; `pi_stack()` mounts it on the Pi | 1 |
 | `imu` | Pololu MinIMU-9 v5 STEP | 1 |
 | `kicker_board` | ZJUNlict Booster Board 2019 KiCad/STEP conversion + photos; tall parts (caps, rocker) as envelopes | 1 |
-| `solenoid` | SOLETEC 018 drawing (kicker candidate) | 1 |
+| `solenoid` | SOLETEC 018 drawing (kicker) | 1 |
 
 ## Conventions
 

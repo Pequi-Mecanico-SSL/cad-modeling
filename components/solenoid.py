@@ -1,4 +1,4 @@
-"""SOLETEC 018 solenoid, a kicker candidate, from imports/mechanics/references/candidates/soletec-018-solenoid-dimensions.pdf.
+"""SOLETEC 018 solenoid, the kicker's, from imports/mechanics/references/candidates/soletec-018-solenoid-dimensions.pdf.
 
 Frame: plunger axis along Z, origin on the axis at the frame face the plunger exits from, plunger toward -Z.
 The U-frame back (mounting face) faces -X and the coil side +X.
