@@ -17,7 +17,7 @@ jobs:
         with:
           submodules: true
 
-      - uses: astral-sh/setup-uv@v10
+      - uses: astral-sh/setup-uv@v10.2.0
 
       - name: Install headless rendering libraries
         run: sudo apt-get update && sudo apt-get install -y libegl1 libgl1 libosmesa6 libxrender1
