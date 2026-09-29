@@ -78,7 +78,7 @@ if __name__ == "__main__":
         assert all(child.is_valid for child in c.children)
         bb = c.bounding_box()
         assert abs(bb.size.Z - length) < 1e-6 and abs(bb.size.X - HOUSING_HEIGHT) < 1e-6
-        build(c, c.label, export=False)
+        build(c, c.label)
 
     connector = instance(xt90i(), ON_ESC)
     cups = connector.children[1]
