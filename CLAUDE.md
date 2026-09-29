@@ -55,6 +55,7 @@ uv run components/esc.py            # build one component
 uv run assemblies/robot.py          # build + envelope/interference checks
 uv run python -m ocp_viewer         # live 3D viewer at http://127.0.0.1:3939
 uv run assemblies/robot.py --show   # also push the result to the viewer
+git tag v0.1 && git push origin v0.1  # CI builds every script and publishes out/ as a GitHub release
 ```
 
 ## Verifying changes

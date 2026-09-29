@@ -1,0 +1,50 @@
+name: Release
+
+# A v* tag builds every model and publishes out/ as a release; a manual run only keeps it as a workflow artifact
+on:
+  push:
+    tags: ["v*"]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          submodules: true
+
+      - uses: astral-sh/setup-uv@v6
+
+      - name: Install headless rendering libraries
+        run: sudo apt-get update && sudo apt-get install -y libegl1 libgl1 libosmesa6 libxrender1
+
+      - run: uv sync --locked
+
+      - name: Build
+        run: |
+          for script in components/*.py parts/*.py assemblies/*.py; do
+            [ "$(basename "$script")" = __init__.py ] && continue
+            echo "::group::$script"
+            uv run "$script"
+            echo "::endgroup::"
+          done
+
+      - name: Package
+        run: cd out && zip -r ../cad-outputs.zip .
+
+      - name: Publish the release
+        if: github.ref_type == 'tag'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh release create "$GITHUB_REF_NAME" --generate-notes cad-outputs.zip out/*/*.step out/*/*.stl out/*/*.png
+
+      - name: Keep the outputs
+        if: github.ref_type != 'tag'
+        uses: actions/upload-artifact@v4
+        with:
+          name: cad-outputs
+          path: out/
